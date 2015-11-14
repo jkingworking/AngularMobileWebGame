@@ -8,9 +8,14 @@ Before starting make sure you have the latest NPM and Bower already installed, I
 __Note__ If not installing globally, first cd into the root of this project then remove the `-g` flag from all command...
 
 1. Download and install node from https://nodejs.org
-2. Install Bower ```sudo npm install bower -g```
-3. Update Node, NPM, and Bower
+
+2. Install Bower 
+  ```
+sudo npm install bower -g
 ```
+
+3. Update Node, NPM, and Bower
+  ```
 sudo npm update n npm bower -g
 ```
 
