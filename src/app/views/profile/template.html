@@ -1,0 +1,103 @@
+<div id="view-profile">
+
+    <div class="profile-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <avatar src="profileData.user.avatar.file_location"></avatar>
+                    <h2>{{profileData.user.name}}</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div class="banner" >{{{}|moment:'MMMM'}} Standings
+                        <div class="banner-tails"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-center header-points-col">
+                    <h3>{{profileData.monthOverview.points|number}}</h3>
+                    <span class="small">Points</span>
+                </div>
+                <div class="col-xs-4 text-center header-group-col">
+                    <h3>{{profileData.monthOverview.rank.group.rank|ordinal}}</h3>
+                    <span class="small">Dealership</span>
+                </div>
+                <div class="col-xs-4 text-center header-overall-col">
+                    <h3>{{profileData.monthOverview.rank.all.rank|ordinal}}</h3>
+                    <span class="small">Overall</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h3>Road to the Sale</h3>
+                    <p class="small caption">This month</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-center road-to-sale-dot">
+                    <div class="number-dot" >
+                        <i class="fa fa-calendar"></i>
+                        {{profileData.monthOverview.appointmentsSet|number}}
+                    </div>
+                    <h5>Appointments</h5>
+                </div>
+                <div class="col-xs-4 text-center road-to-sale-dot">
+                    <div class="number-dot" >
+                        <i class="fa fa-car"></i>
+                        {{profileData.monthOverview.testDrives|number}}
+                    </div>
+                    <h5>Test Drives</h5>
+                </div>
+                <div class="col-xs-4 text-center road-to-sale-dot">
+                    <div class="number-dot" >
+                        <i class="fa fa-money"></i>
+                        {{profileData.monthOverview.vehiclesSold|number}}
+                    </div>
+                    <h5>Vehicles Sold</h5>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h3>Game Performance</h3>
+                    <p class="small caption">This month</p>
+                </div>
+            </div>
+            <div class="row" ng-repeat="game in profileData.games">
+                <div class="col-xs-12">
+                    <h4>{{game.game}}</h4>
+                </div>
+                <div class="col-xs-12" ng-if="game.questionsAnswered == 0">
+                    <div class="progress">
+                        <p class="text-center">Not yet played</p>
+                    </div>
+                    <p>&nbsp;</p>
+                </div>
+                <div class="col-xs-12" ng-if="game.questionsAnswered > 0">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar"
+                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                             ng-style="{'width':(game.correctPercent * 100) + '%'}"
+                             ng-class="{
+                                'progress-bar-danger': game.correctPercent < 0.5,
+                                'progress-bar-warning': game.correctPercent < 0.8,
+                                'progress-bar-success': game.correctPercent >= 0.8
+                                }">
+                            {{game.correctPercent * 100 | number:0}}%
+                        </div>
+                    </div>
+                    <p class="small"> {{game.answeredCorrect}} of {{game.questionsAnswered}} questions answered correctly</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

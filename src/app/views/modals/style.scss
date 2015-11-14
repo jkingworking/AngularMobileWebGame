@@ -1,0 +1,141 @@
+@import "../../../scss/vars";
+
+.entering {
+  %modal {
+    animation                 : jumpIn $modalTransitionTiming;
+    animation-timing-function : ease;
+  }
+  .modal-backdrop {
+    animation                 : fadeIn $modalTransitionTiming;
+    animation-timing-function : ease;
+  }
+}
+
+.leaving {
+  %modal {
+    animation                 : jumpOut $modalTransitionTiming;
+    animation-timing-function : ease;
+  }
+  .modal-backdrop {
+    animation                 : fadeOut $modalTransitionTiming;
+    animation-timing-function : ease;
+  }
+}
+
+%modal {
+  position      : fixed;
+  width         : 90%;
+  border-radius : .5em;
+  background    : $modalBackground;
+  top           : 0;
+  bottom        : 0;
+  left          : 0;
+  right         : 0;
+  margin        : auto;
+  z-index       : 1050;
+  box-shadow    : 0 10px 10px rgba(0, 0, 0, 0.2);
+  color         : $brand-secondary;
+  text-align    : center;
+
+  h1, h2 {
+    color : #000;
+  }
+
+  h3, h4, h5, h5 {
+    color : $brand-primary;
+  }
+
+  button {
+
+    i {
+
+      &.right {
+        float : right;
+      }
+
+      vertical-align : middle;
+      font-size      : 1.2em;
+    }
+
+  }
+
+  .modal-footer{
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+}
+
+.modal-backdrop,
+.modal-backdrop.in{
+  opacity: 1;
+  background: $brand-overlay;
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#modal-container {
+  position : fixed;
+  top      : 0;
+  bottom   : 0;
+  left     : 0;
+  right    : 0;
+  z-index  : 1050;
+}
+
+#modal-game-complete {
+  @extend %modal;
+  height: 226px;
+}
+
+@keyframes jumpIn {
+  0% {
+    transform : scale(.2);
+    opacity   : 0;
+
+  }
+  90% {
+    transform : scale(1.2);
+    opacity   : 1;
+
+  }
+  100% {
+    transform : scale(1);
+    opacity   : 1;
+  }
+}
+
+@keyframes jumpOut {
+  0% {
+    transform : scale(1);
+    opacity   : 1;
+  }
+  10% {
+    transform : scale(1.2);
+    opacity   : 1;
+
+  }
+  100% {
+    transform : scale(.2);
+    opacity   : 0;
+
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity : 0;
+  }
+  100% {
+    opacity : 0.5;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity : 0.5;
+  }
+  100% {
+    opacity : 0;
+  }
+}

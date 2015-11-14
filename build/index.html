@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="mbsApp" manifest="app.manifest">
+<head>
+    <meta charset="utf-8">
+    <title>Sales Dawg</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" type="image/png" href="assets/icons/faviconx16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/icons/Icon-40.png" sizes="40x40">
+    <link rel="icon" type="image/png" href="assets/icons/Icon-76@2x.png" sizes="152x152">
+
+    <link rel="apple-touch-icon" href="assets/icons/Icon-60@2x.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/Icon-60@3x.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/Icon-76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/Icon-76@2x.png" />
+    <link rel="apple-touch-icon" sizes="58x58" href="assets/icons/Icon-Small@2x.png" />
+
+    <link rel="apple-touch-startup-image" href="assets/startupscreens/apple-touch-startup-image-320x460.png" media="(device-width: 320px)">
+    <!-- iPhone (Retina) SPLASHSCREEN-->
+    <link href="assets/startupscreens/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <!-- iPad (portrait) SPLASHSCREEN-->
+    <link href="assets/startupscreens/apple-touch-startup-image-768x1004.png" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+    <!-- iPad (Retina, portrait) SPLASHSCREEN-->
+    <link href="assets/startupscreens/apple-touch-startup-image-1536x2008.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <!-- iPad (landscape) SPLASHSCREEN-->
+    <link href="assets/startupscreens/apple-touch-startup-image-748x1024.png" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+    <!-- iPad (Retina, landscape) SPLASHSCREEN-->
+    <link href="assets/startupscreens/apple-touch-startup-image-1496x2048.png" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <link rel="stylesheet" href="css/vendor-0edabbbe.css"/>
+
+    <link rel="stylesheet" href="css/styles-8e316e5f.css"/>
+
+</head>
+<body ng-class="_getBodyClass()">
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<div ui-view id="root-view" ng-class="{'loading': _loading}" ></div>
+<div class="loading-container" ng-show="_loading">
+    <div class="loading-block">
+        <div ng-include="'/assets/images/loading-logo.svg'"></div>
+    </div>
+</div>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    /*! modernizr 3.0.0 (Custom Build) | MIT *
+     * http://modernizr.com/download/?-touchevents !*/
+    !function(e,n,t){function o(e,n){return typeof e===n}function s(){var e,n,t,s,a,i,r;for(var l in c){if(e=[],n=c[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(s=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],r=i.split("."),1===r.length?Modernizr[r[0]]=s:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=s),f.push((s?"":"no-")+r.join("-"))}}function a(e){var n=u.className,t=Modernizr._config.classPrefix||"";if(p&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(o,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),p?u.className.baseVal=n:u.className=n)}function i(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):p?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function r(){var e=n.body;return e||(e=i(p?"svg":"body"),e.fake=!0),e}function l(e,t,o,s){var a,l,f,c,d="modernizr",p=i("div"),h=r();if(parseInt(o,10))for(;o--;)f=i("div"),f.id=s?s[o]:d+(o+1),p.appendChild(f);return a=i("style"),a.type="text/css",a.id="s"+d,(h.fake?h:p).appendChild(a),h.appendChild(p),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(n.createTextNode(e)),p.id=d,h.fake&&(h.style.background="",h.style.overflow="hidden",c=u.style.overflow,u.style.overflow="hidden",u.appendChild(h)),l=t(p,e),h.fake?(h.parentNode.removeChild(h),u.style.overflow=c,u.offsetHeight):p.parentNode.removeChild(p),!!l}var f=[],c=[],d={_version:"3.0.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){c.push({name:e,fn:n,options:t})},addAsyncTest:function(e){c.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=d,Modernizr=new Modernizr;var u=n.documentElement,p="svg"===u.nodeName.toLowerCase(),h=d._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):[];d._prefixes=h;var m=d.testStyles=l;Modernizr.addTest("touchevents",function(){var t;if("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch)t=!0;else{var o=["@media (",h.join("touch-enabled),("),"heartz",")","{#modernizr{top:9px;position:absolute}}"].join("");m(o,function(e){t=9===e.offsetTop})}return t}),s(),a(f),delete d.addTest,delete d.addAsyncTest;for(var v=0;v<Modernizr._q.length;v++)Modernizr._q[v]();e.Modernizr=Modernizr}(window,document);
+</script>
+<script>
+    if(!Modernizr.touchEvents && window.innerWidth > 600)
+    {
+        window.location.replace('/iphone.html');
+    }
+</script>
+<script>
+    /*(function (b, o, i, l, e, r) {
+     b.GoogleAnalyticsObject = l;
+     b[l] || (b[l] =
+     function () {
+     (b[l].q = b[l].q || []).push(arguments)
+     });
+     b[l].l = +new Date;
+     e = o.createElement(i);
+     r = o.getElementsByTagName(i)[0];
+     e.src = '//www.google-analytics.com/analytics.js';
+     r.parentNode.insertBefore(e, r)
+     }(window, document, 'script', 'ga'));
+     ga('create', 'UA-XXXXX-X');
+     ga('send', 'pageview'); */
+</script>
+
+<script src="app/vendor-95dbf8fc.js"></script>
+
+<script src="app/app-8dea33c7.js"></script>
+
+</body>
+</html>

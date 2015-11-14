@@ -1,0 +1,375 @@
+@import "../../../scss/vars";
+
+$roadToSaleHeaderBackground: #888;
+
+.road-to-sale-state{
+  background: $roadToSaleHeaderBackground;
+
+  #main-view #slidein-navbar .menu-container {
+    background: $roadToSaleHeaderBackground;
+  }
+
+  #main-view .navbar {
+    background: transparentize($roadToSaleHeaderBackground, $headerBarTransparency);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #main-view #main-content-area{
+    padding: 0;
+  }
+}
+
+#view-road-to-sale {
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+  user-select    : none;
+  touch-callout  : none;
+
+  .view-road-to-sale-header,
+  .view-road-to-sale-list {
+    flex : auto auto;
+  }
+
+  .view-road-to-sale-header {
+    flex-grow : 1;
+    overflow  : hidden;
+    position  : relative;
+
+    .background {
+      position : absolute;
+      top      : 0;
+      left     : 0;
+      height   : 100%;
+      width    : 100%;
+
+      & > div {
+        position            : absolute;
+        top                 : 0;
+        width               : 100%;
+        height              : 100%;
+        background-repeat   : repeat-x;
+        background-size     : 600px 150px;
+        background-position : center center;
+      }
+
+      .grass{
+        z-index   : 8;
+        top: 60%;
+        height: 300px;
+        background-image : url("../assets/images/road-to-sale-backgrounds/country/grass.png");
+        background-size     : 3200px 300px;
+
+        &.left{
+          left: -20%;
+          transform           : perspective(180px) rotateY(25deg);
+          animation : slide-left 30s linear infinite;
+        }
+
+        &.right{
+          right: -20%;
+          transform           : perspective(180px) rotateY(-25deg);
+          animation : slide-right 30s linear infinite;
+        }
+      }
+      .layer-1 {
+        z-index   : 9;
+        animation : slide-forward 1s linear infinite;
+      }
+      .layer-2 {
+        z-index   : 8;
+        animation : slide-forward 8s linear infinite;
+      }
+      .layer-3 {
+        z-index   : 7;
+        animation : slide-forward 20s linear infinite;
+      }
+      .layer-4 {
+        z-index             : 1;
+        animation           : slide-left-right 300s linear infinite;
+        background-position : top left;
+        background-size     : cover;
+      }
+
+      &.country {
+        .layer-1 {
+          background-image : url("../assets/images/road-to-sale-backgrounds/country/layer-1.png");
+        }
+        .layer-2 {
+          background-image : url("../assets/images/race-backgrounds/country/layer-2.png");
+        }
+        .layer-3 {
+          background-image : url("../assets/images/race-backgrounds/country/layer-3.png");
+        }
+        .layer-4 {
+          background-image : url("../assets/images/race-backgrounds/country/layer-4.png");
+        }
+      }
+
+    }
+
+    .street-container {
+      position   : absolute;
+      width      : 100%;
+      height     : 50%;
+      bottom     : 0;
+    }
+
+    .animated-grass {
+      position   : absolute;
+      width      : 100%;
+      height     : 100%;
+      margin     : auto;
+      left       : 0;
+      right      : 0;
+      top        : 35%;
+      z-index: 5;
+    }
+
+    .animated-street {
+      border-radius       : 50% 50% 0 0;
+      overflow            : hidden;
+      position            : absolute;
+      width               : 80%;
+      height              : 100%;
+      margin              : auto;
+      left                : 0;
+      right               : 0;
+      top                 : 0;
+      background-image    : url("../assets/images/road-to-sale-backgrounds/country/road.png");
+      background-size     : 300px 600px;
+      background-position : bottom center;
+      z-index             : 10;
+      animation           : slide-up 5s linear infinite;
+      transform           : perspective(60px) rotateX(40deg);
+    }
+
+    .header-block {
+      z-index                 : 10;
+      color                   : $main-background;
+      -webkit-backdrop-filter: blur(10px);
+      position                : absolute;
+      width                   : 100%;
+      height                  : 74px + $navBarHeight;
+      margin                  : auto;
+      padding                 : 0 15px;
+      top                     : 0;
+      bottom                  : 0;
+      left                    : 0;
+      color: $text-color;
+
+    }
+  }
+
+  .view-road-to-sale-list {
+    flex-grow  : 0;
+    background : $main-background;
+
+    h4 {
+      margin : 1.5em 0;
+    }
+
+    .game-btn {
+      color      : $text-color-emphasis;
+      transition : all 0.1s;
+      position   : relative;
+      text-align : left;
+
+      &:active {
+        background : $brand-grey;
+      }
+
+      td {
+        padding-top    : 1em;
+        padding-bottom : 1em;
+      }
+
+    }
+
+
+    .game-icon {
+      position  : absolute;
+      margin    : auto;
+      font-size : 3.5em;
+      color     : rgba(255, 255, 255, 0.4);
+      width     : 1em;
+      height    : 1em;
+      top       : 0;
+      bottom    : 0;
+      left      : 0;
+      right     : 0;
+      transform : rotate(15deg);
+    }
+
+    .learn-more-icon {
+      font-size : 2em;
+      color     : $brand-accent-gray; //$brand-secondary;
+    }
+
+    tr {
+      transition : all $transitionTiming;
+
+      &:active{
+        color : #fff;
+
+        .game-description,
+        .learn-more-icon,
+        .icon-col {
+          color : #fff;
+          .game-icon-container {
+            border-radius : 0;
+            width         : 100%;
+            height        : 100%;
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        animation  : $animationBuildTiming slideInLeft;
+
+        &:active,
+        .game-icon-container {
+          background : $brand-success;
+        }
+      }
+
+      &:nth-child(2) {
+        animation  : ($animationBuildTiming + $animationBuildOffset) slideInLeft;
+
+        &:active,
+        .game-icon-container {
+          background : $brand-warning-alt;
+        }
+      }
+
+      &:nth-child(3) {
+        animation  : ($animationBuildTiming + $animationBuildOffset * 2) slideInLeft;
+
+        &:active,
+        .game-icon-container {
+          background : $brand-primary;
+        }
+      }
+
+      &:nth-child(4) {
+        animation  : ($animationBuildTiming + $animationBuildOffset * 3) slideInLeft;
+
+        &:active,
+        .game-icon-container {
+          background : $brand-warning;
+        }
+      }
+
+      &:nth-child(5) {
+        animation  : ($animationBuildTiming + $animationBuildOffset * 4) slideInLeft;
+
+        &:active,
+        .game-icon-container {
+          background : $brand-info;
+        }
+      }
+
+      &:last-child {
+        .desc-col {
+          border-bottom : none;
+        }
+      }
+
+    }
+
+    .game-title {
+      font-size : 1.25em;
+    }
+
+    .game-description {
+      color         : $brand-accent-gray;
+      margin-bottom : 0;
+    }
+
+    .icon-col {
+      position: relative;
+      vertical-align : top;
+      width         : 110px;
+
+      .game-icon-container {
+        transition: all $transitionTiming;
+        width         : 80px;
+        height        : 50px;
+        border-radius : 25px;
+        position      : absolute;
+        margin: auto;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow      : hidden;
+      }
+    }
+
+    .desc-col {
+      padding       : 1em 0;
+      border-bottom : 1px solid $brand-grey;
+    }
+
+    .learn-more-col {
+      padding : 0 1em;
+    }
+
+  }
+
+}
+
+
+@keyframes slide-up {
+  0% {
+    background-position: center 0;
+  }
+  100% {
+    background-position: center 600px;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    background-position: 0 center;
+  }
+  100% {
+    background-position: -1600px center;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    background-position: 0 center;
+  }
+  100% {
+    background-position: 1600px center;
+  }
+}
+
+@keyframes slide-forward {
+  0% {
+    background-size     : 600px 150px;
+  }
+  50%{
+    background-position : center center;
+  }
+  100% {
+    background-size     : 3600px 900px;
+    background-position : center center;
+  }
+}
+
+@keyframes slide-left-right {
+  0%{
+    background-position : top left;
+  }
+  50%{
+    background-position : top right;
+  }
+  100%{
+    background-position : top left;
+  }
+}

@@ -1,0 +1,233 @@
+@import "../../../scss/vars";
+
+.car-race {
+  .layer-1 ,
+  .layer-2 ,
+  .layer-3 ,
+  .layer-4 {
+    background-size     : 1200px 300px;
+    background-position : bottom left;
+  }
+
+  &.city {
+    .layer-1 {
+      background-image: url("../assets/images/race-backgrounds/city/layer-1.png");
+    }
+    .layer-2 {
+      background-image: url("../assets/images/race-backgrounds/city/layer-2.png");
+    }
+    .layer-3 {
+      background-image: url("../assets/images/race-backgrounds/city/layer-3.png");
+    }
+    .layer-4 {
+      background-image: url("../assets/images/race-backgrounds/city/layer-4.png");
+    }
+  }
+
+  &.country {
+    .layer-1 {
+      background-image: url("../assets/images/race-backgrounds/country/layer-1.png");
+    }
+    .layer-2 {
+      background-image: url("../assets/images/race-backgrounds/country/layer-2.png");
+    }
+    .layer-3 {
+      background-image: url("../assets/images/race-backgrounds/country/layer-3.png");
+    }
+    .layer-4 {
+      background-image: url("../assets/images/race-backgrounds/country/layer-4.png");
+    }
+  }
+
+  &.ocean {
+    .layer-1 {
+      background-image: url("../assets/images/race-backgrounds/ocean/layer-1.png");
+    }
+    .layer-2 {
+      background-image: url("../assets/images/race-backgrounds/ocean/layer-2.png");
+    }
+    .layer-3 {
+      background-image: url("../assets/images/race-backgrounds/ocean/layer-3.png");
+    }
+    .layer-4 {
+      background-image: url("../assets/images/race-backgrounds/ocean/layer-4.png");
+    }
+  }
+}
+
+
+.car-race{
+  $carVOffset: 32px;
+  $carBaseOffset: -2px;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .banner{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(10% + #{$navBarHeight});
+    width: 40%;
+    color: $brand-primary;
+
+    &:before,
+    &:after {
+      opacity: 0.8;
+    }
+  }
+
+  .background{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+
+    &>div{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat-x;
+    }
+
+    .layer-1 {
+      z-index: 10;
+      animation: slide-by 1s linear infinite;
+    }
+    .layer-2{
+      z-index: 9;
+      animation: slide-by 8s linear infinite;
+    }
+    .layer-3{
+      z-index: 8;
+      animation: slide-by 20s linear infinite;
+    }
+    .layer-4{
+      z-index: 7;
+      animation: slide-by 28s linear infinite;
+    }
+  }
+
+  .car-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .car1, .car2, .car3 {
+    z-index: 50;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 120px;
+    animation: car-motion 3s ease infinite;
+
+    $pointerOffset: 105%;
+
+    .alt-avatar{
+      height: 3rem;
+      width: 3rem;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: ($pointerOffset - 3%);
+      margin: auto;
+      border : 2px solid #fff;
+    }
+
+    .points{
+      background: rgba(255,255,255,0.8);
+      height: 3rem;
+      line-height: 3rem;
+      padding-right: 2em;
+      padding-left: .75em;
+      border-radius: 3rem;
+      position: absolute;
+      right: $pointerOffset;
+      font-size: 1.5rem;
+      top: 0;
+      color: #000;
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    &.me {
+      .points {
+        font-size : 1.45em;
+      }
+    }
+  }
+
+  .car1 {
+    bottom: $carBaseOffset+($carVOffset*2);
+    left: 60%;
+    animation-delay : .5s;
+
+    .car {
+      .car-body{
+        fill: #ffff00;
+      }
+    }
+  }
+
+  .car2{
+    bottom: $carBaseOffset+($carVOffset*1);
+    left: 45%;
+    animation-delay : 1s;
+
+    .car {
+      .car-body{
+        fill: #ffffff;
+      }
+    }
+  }
+
+  .car3 {
+    bottom: $carBaseOffset+($carVOffset*0);
+    left: 40%;
+
+    .car {
+      .car-body{
+        fill: #D60606;
+      }
+    }
+  }
+
+  .wheel{
+    animation: rotate-wheels .8s linear infinite;
+    transform-origin: 50% 50%;
+  }
+
+}
+
+@keyframes rotate-wheels {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes car-motion {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slide-by {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: -600px bottom;
+  }
+}

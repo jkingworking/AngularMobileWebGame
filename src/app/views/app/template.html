@@ -1,0 +1,80 @@
+<div id="main-view" ng-class="{'menu-showing':showingMenu}">
+
+    <nav class="navbar"
+         ng-class="{'show-menu':showingMenu, 'hide-menu':!showingMenu}">
+        <div class="container">
+            <div class="row menu-header">
+                <div class="col-xs-2">
+                    <button type="button" class="menu-btn" ng-click="toggleMenu()" ng-if="_showMenuBtn">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <button type="button" class="menu-btn" ng-click="goBack()" ng-if="_showBackBtn">
+                        <span class="sr-only">Back</span>
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+                </div>
+                <div class="col-xs-8 text-center">
+                    <h4>{{_stateTitle}}</h4>
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="right-btn" ng-if="_headerBtn" ui-sref="{{_headerBtn.state}}">
+                        <span class="sr-only">{{_headerBtn.title}}</span>
+                        <i class="{{_headerBtn.icon}}"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div
+            id="main-content-area"
+            ng-class="{'show-menu':showingMenu, 'hide-menu':!showingMenu}">
+        <div ui-view="mainContent" id="main-content">
+        </div>
+    </div>
+    <div class="menu-page-cover" ng-click="toggleMenu()"
+         ng-class="{'show-menu':showingMenu, 'hide-menu':!showingMenu}"></div>
+    <div id="slidein-navbar" ng-class="{'show-menu':showingMenu, 'hide-menu':!showingMenu}">
+        <div class="menu-container">
+            <div class="menu-outer">
+                <style>
+                    .user-info-container:after {
+                        background-image : url({{user.avatar.file_location}});
+                    }
+                </style>
+                    <div class="user-info-container text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="text-center col-sm-10">
+                                    <a ui-sref="app.profile"><user-avatar></user-avatar></a>
+                                    <h4 class="user-name" ui-sref="app.profile">
+                                        {{user.name}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav">
+                        <li ng-repeat="menuItem in mainMenu" ng-class="{active: $state.includes(menuItem.state)}">
+                            <a ui-sref="{{menuItem.state}}" ng-click="hideMenu()">
+                                <i ng-class="menuItem.icon"></i>
+                                {{menuItem.title}}
+                                <span ng-if="menuItem.badgeCount" class="badge pull-right">{{menuItem.badgeCount}}</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="menu-footer">
+                        <ul class="small">
+                            <li ng-repeat="link in secondaryMenu">
+                                <a target="_blank" href="{{link.href}}">{{link.title}}</a>
+                            </li>
+                        </ul>
+                        <p class="small text-center version">v {{_version}}</p>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

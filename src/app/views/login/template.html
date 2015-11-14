@@ -1,0 +1,50 @@
+<div ng-add-to-home-screen></div>
+<div id="view-login">
+    <div class="container">
+
+        <div class="container text-center bg-grey alert">
+            <div class="icon-container">
+                <div class="icon">
+                    <img src="assets/icons/iTunesArtwork.png" alt="" class="img-circle">
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <img class="normal-icon" ng-src="assets/images/logo.svg" alt="SalesDawg Logo" title="SalesDawg" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container" >
+                <form ng-submit="loginUser()">
+                    <div class="alert text-center" ng-if="_loginNotification"><b>{{_loginNotification}}</b></div>
+                    <div class="alert text-center" ng-if="error"><b>{{error}}</b></div>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                        <input class="form-control input-lg" type="text" placeholder="Username" ng-model="login.username" >
+                    </div>
+                    <div class="slide-up" ng-class="{'collapsed': forgotPassword}">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                            <input class="form-control input-lg" type="password" placeholder="Password" ng-model="login.password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-lg col-xs-12 btn-primary" ng-disabled="loading" ng-class="{'disabled':loading}" ><span ng-hide="loading" >{{forgotPassword?'Reset Password' : 'Login'}}</span><span ng-hide="!loading" >Loading <i class="fa fa-spinner fa-pulse" ></i></span></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="">
+                <a class="btn-link" ng-click="forgotPassword = !forgotPassword">{{forgotPassword ? 'Cancel' : 'Forgot Password'}}</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container panel-footer login-footer">
+        <div class="row" ng-click="signUp()">
+            <div class="col-xs-6">Need an account?</div>
+            <div class="col-xs-6 text-right">Sign Up</div>
+        </div>
+    </div>
+</div>

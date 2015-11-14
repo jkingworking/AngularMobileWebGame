@@ -1,0 +1,45 @@
+$brand-primary :#2EAE99; //#2ba86d;
+$brand-primary-alt :  #249360;
+$brand-secondary : #666666;
+$brand-warning : #fab540;
+$brand-warning-alt: #EBD957;
+$brand-danger : #D42818;
+$brand-danger-alt: #E97E62;
+$brand-success : #2b80ff;
+$brand-success-alt: #676CAE;
+$brand-overlay: rgba(255,255,255,0.5);
+
+$gameHeaderBackground: $brand-primary;
+
+$headerBarTransparency: 0.4;
+
+$text-color : #333;
+$text-color-emphasis : #000;
+
+$font-family-sans-serif : 'Titillium Web';
+$headings-font-weight : 200;
+
+$brand-accent-gray : #b3b3b3;
+
+$main-background : #fff;
+$brand-grey : #eee;
+
+$icon-font-path: "../fonts/";
+
+$menuWidth : 256px;
+$iosHeaderHeight: 0px ;
+$navBarHeight : 50px + $iosHeaderHeight;
+$avatarSize : 86px;
+
+$transitionTiming : .25s;
+$stateTransitionTiming: $transitionTiming;
+
+$animationBuildTiming: .5s;
+$animationBuildOffset: .1s;
+
+$modalBackground : #fff;
+$modalTransitionTiming : $transitionTiming;
+
+$hoverState: false;
+
+@import "../components/bootstrap-sass/assets/stylesheets/bootstrap/variables";

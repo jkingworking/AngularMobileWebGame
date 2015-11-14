@@ -1,0 +1,24 @@
+<div id="view-game">
+
+    <div class="game-container"
+         ng-if="gameData.type === 'questionAnswer'">
+        <game-question-answer game-data="gameData"></game-question-answer>
+    </div>
+
+    <div class="game-container"
+         ng-if="gameData.type === 'setAppointment'">
+        <game-set-appointment game-data="gameData"></game-set-appointment>
+    </div>
+
+    <div class="game-container"
+         ng-if="gameData.type === 'testDrive'">
+        <game-test-drive game-data="gameData"></game-test-drive>
+    </div>
+
+    <div class="game-container"
+         ng-if="gameData.type === 'soldVehicle'">
+        <game-sold-vehicle game-data="gameData"></game-sold-vehicle>
+    </div>
+
+
+</div>

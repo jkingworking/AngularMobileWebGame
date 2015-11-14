@@ -1,0 +1,52 @@
+<div id="view-settings">
+    <form ng-submit="updateProfile()" id="profileForm">
+        <div class="text-center avatar-upload-container">
+            <div class="avatar-upload-box">
+                <button
+                    ngf-select="true"
+                    ng-model="avatar"
+                    ngf-multiple="false"
+                    ngf-capture="'camera'"
+                    accept="image/*"
+                    ngf-accept="'image/*'"
+                    ngf-keep="false"
+                    ngf-keep-distinct="true"
+                    ngf-reset-on-click="true"
+                    ngf-reset-model-on-click="true"
+                    >Upload</button>
+                <div
+                    ngf-src="avatar"
+                    ngf-background="avatar"
+                    ngf-as-background="true"
+                    ngf-accept="'.jpg,.png'"
+                    class="img" ></div>
+                <div class="upload-complete" ng-class="{show: progressComplete}"><i class="fa fa-check"></i></div>
+                <div class="upload-progress" ng-style="progressIndicator"></div>
+            </div>
+            <p class="small">Tap avatar to change</p>
+        </div>
+
+        <div class="container form-container">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control " placeholder="Name" ng-model="user.name" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control " placeholder="Email" ng-model="user.email" >
+            </div>
+
+            <div class="form-group">
+                <label for="timeZone">Time Zone</label>
+                <select id="timeZone" class="form-control " placeholder="Email" ng-model="user.timezone" >
+                    <option ng-repeat="timeZone in timeZones" value="{{timeZone}}" ng-selected="user.timezone == timeZone">{{timeZone}}</option>
+                </select>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-success btn-lg full-width submit-btn" type="submit" >{{(loading)?'Saving...':'Save'}}</button>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,49 @@
+<div id="view-dashboard">
+    <car-race racers="racers" place="place"></car-race>
+    <div class="dashboard-summary">
+        <div class="container">
+            <div class="row slide-navigator tabs">
+                <div class="col-xs-4 text-center tab" ng-class="{active: slideIndex == 0}" ng-click="setSlide(0)">
+                    <span class="tab-text">My Points</span>
+                </div>
+                <div class="col-xs-4 text-center tab" ng-class="{active: slideIndex == 1}" ng-click="setSlide(1)">
+                    <span class="tab-text">My Rank</span>
+                </div>
+                <div class="col-xs-4 text-center tab" ng-class="{active: slideIndex == 2}" ng-click="setSlide(2)">
+                    <span class="tab-text">My Smarts</span>
+                </div>
+            </div>
+        </div>
+        <ul rn-carousel class="points-slider" rn-carousel-index="slideIndex" rn-carousel-transition="fadeAndSlide">
+            <li class="slide" ng-repeat="slide in slides">
+                <div class="points">
+                    {{slide}}
+                </div>
+            </li>
+        </ul>
+        <div class="text-center" rn-carousel-indicators ng-if="slides.length > 1" slides="slides" rn-carousel-index="slideIndex"></div>
+        <div class="earn-points-btn">
+            <div class="container">
+                <button class="btn btn-success btn-lg salesDawg-font btn-block" ng-click="earnPoints()">Earn Points!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-newsfeed">
+        <div class="container">
+            <h3>News Feed</h3>
+        </div>
+        <table class="table table-striped">
+            <tr ng-repeat="news in newsFeed" class="news-item"  ui-sref="app.profile({profileId:news.user.id})" >
+                <td class="avatar-col">
+                    <avatar src="news.user.avatar.file_location"></avatar>
+                </td>
+                <td class="info-col">
+                    <div class="small grey float-right">{{news.created|moment:'fromNow'}}</div>
+                    <strong>{{news.user.name}}</strong>
+                    <p class="small primary">{{news.description || news.game.title}} <span class="warning" >{{news.item}}</span></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

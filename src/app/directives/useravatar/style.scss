@@ -1,0 +1,20 @@
+@import "../../../scss/vars";
+
+.directive-user-avatar {
+  height        : $avatarSize;
+  width         : $avatarSize;
+  border-radius : 50%;
+  border        : 1px solid rgb(255, 255, 255);
+  overflow      : hidden;
+  position      : relative;
+  display       : inline-block;
+
+  .user-avatar {
+    height              : 100%;
+    width               : 100%;
+    background-color    : $brand-primary;
+    background-position : center center;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+  }
+}

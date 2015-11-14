@@ -1,0 +1,298 @@
+@import "../../../scss/vars";
+
+/*$navbar-default-brand-hover-color: darken($main-background, 10%);
+$navbar-default-brand-hover-bg: lighten($brand-primary, 10%);
+$navbar-default-toggle-hover-bg: lighten($brand-primary, 10%);*/
+
+$menu-background : $brand-primary;
+$menu-text-color : rgba(255, 255, 255, 0.75);
+$menu-link-color : $menu-text-color;
+$menu-icon-color : rgba(0, 0, 0, .2);
+
+$menu-divider-color : rgba(255, 255, 255, 0.25);
+$menu-background-active : rgba(0, 0, 0, .1);
+$menu-text-color-active : #fff;
+$menu-icon-color-active : #fff;
+
+body {
+  //  padding-top : 70px;
+}
+
+.ultra-small {
+  display : none;
+
+  @media (max-width : 355px) {
+    & {
+      display : block;
+    }
+  }
+}
+
+#main-view {
+  height : 100%;
+
+//  &.menu-showing{
+//    #main-content-area {
+//      overflow: hidden;
+//      #main-content {
+//        filter : blur(5px);
+//      }
+//    }
+//  }
+
+  .navbar {
+    transition       : all $stateTransitionTiming ease-in-out;
+    color            : #ffffff;
+    background-color : transparentize($brand-primary, 0);
+    border-radius    : 0;
+    border-width     : 0;
+    border-bottom    : none;
+    padding          : $iosHeaderHeight 0 0 0;
+    position         : fixed;
+    z-index          : 1000;
+    top              : 0;
+    left             : 0;
+    width            : 100%;
+    height           : $navBarHeight;
+    margin           : 0;
+
+    & > div {
+      padding : .5em 0;
+    }
+
+    &.scrolled {
+      background-color : rgba($main-background, .85);
+    }
+
+    .menu-header > div {
+      height   : 35px;
+      position : relative;
+    }
+
+    .menu-header {
+      position : relative;
+
+      .menu-btn,
+      .right-btn {
+        font-size  : 1.5em;
+        color      : #ffffff;
+        background : none;
+        padding    : 0;
+        height     : 35px;
+        border     : 0;
+        outline    : none;
+      }
+
+      .menu-btn {
+        margin : 0 0 0 1em;
+      }
+      .right-btn {
+        margin : 0 1em 0 0;
+      }
+    }
+
+    #header-logo {
+      max-height : 20px;
+      max-width  : 100%;
+      width      : auto;
+      position   : absolute;
+      margin     : auto;
+      top        : 0;
+      bottom     : 0;
+      left       : 15px;
+    }
+
+  }
+
+  #main-content-area {
+    transition       : background $stateTransitionTiming ease-in-out;
+    padding-top : $navBarHeight;
+    height      : 100%;
+  }
+
+  #main-content {
+    height : 100%;
+    width  : 100%;
+  }
+
+  .menu-page-cover {
+    position   : fixed;
+    z-index    : 1000;
+    height     : 0;
+    width      : 0;
+    top        : 0;
+    bottom     : 0;
+    transition : background .25s;
+
+    &.show-menu {
+      height     : 100%;
+      width      : 100%;
+      left       : 0;
+      right      : 0;
+      background : $brand-overlay;
+    }
+  }
+
+  #slidein-navbar {
+    position   : fixed;
+    z-index    : 1001;
+    height     : 100%;
+    width      : $menuWidth;
+    top        : 0;
+    left       : -$menuWidth;
+    transition : all .25s;
+
+    .badge {
+      background : #fff;
+      margin     : 6px 0;
+      color      : $menu-background;
+    }
+
+    .version{
+      color: rgba(0,0,0,0.25);
+    }
+
+    &.show-menu {
+      transform : translateX($menuWidth);
+
+      .menu-container {
+
+      }
+    }
+
+    .directive-user-avatar {
+      border : 1px solid #fff;
+    }
+
+    .user-info-container {
+      padding-top    : 1em;
+      padding-bottom : 1em;
+      position       : relative;
+      overflow       : hidden;
+      min-height     : 150px;
+
+      & > div {
+        z-index     : 1;
+        position    : absolute;
+        width       : 100%;
+        text-shadow : 1px 1px 10px #000;
+
+        a {
+          color : #fff;
+        }
+
+      }
+
+      &:after {
+        content             : '';
+        top                 : -10%;
+        left                : -10%;
+        height              : 120%;
+        width               : 120%;
+        position            : absolute;
+        z-index             : 0;
+        background-size     : cover;
+        background-position : center center;
+        filter      : blur(10px);
+        opacity             : .6;
+      }
+    }
+
+    .menu-container {
+      transition         : all .25s;
+      background         : $menu-background;
+      color              : $menu-text-color;
+      float              : left;
+
+      height             : 100%;
+      width              : $menuWidth;
+      position           : absolute;
+      top                : 0;
+      bottom             : 0;
+      right              : 0;
+      overflow-scrolling : touch;
+      overflow           : scroll;
+      padding-top        : $iosHeaderHeight;
+
+      .menu-outer {
+        max-width : 100%;
+        height    : 100%;
+        overflow  : scroll;
+        position  : relative;
+      }
+
+      a {
+        color : $menu-link-color;
+        i {
+          color : $menu-icon-color;
+        }
+      }
+    }
+
+    .nav {
+      padding-top : $iosHeaderHeight;
+      border-top  : 1px solid $menu-divider-color;
+      font-weight : 200;
+
+      li {
+        border-bottom : 1px solid $menu-divider-color;
+        &.active {
+          a {
+            background : $menu-background-active;
+            color      : $menu-text-color-active;
+
+            i {
+              color : $menu-icon-color-active;
+            }
+          }
+        }
+
+        a {
+          padding    : 15px;
+          transition : all .25s;
+          font-size  : 1.5em;
+          @extend .salesDawg-font;
+
+          i {
+            margin-right : 15px;
+          }
+
+          &:focus,
+          &:hover,
+          &:active {
+            outline    : none;
+            background : $menu-background-active;
+            color      : $menu-text-color-active;
+
+            i {
+              color : $menu-icon-color-active;
+            }
+          }
+        }
+      }
+    }
+
+    .menu-footer {
+      padding    : 1em 0;
+      width      : 100%;
+      text-align : center;
+      overflow   : hidden;
+
+      ul, li {
+        list-style : none;
+        margin     : 0;
+        padding    : 0;
+      }
+
+      li {
+        display : inline-block;
+        padding : .5em;
+      }
+
+      //      a {
+      //        color : $brand-primary;
+      //      }
+    }
+  }
+
+}

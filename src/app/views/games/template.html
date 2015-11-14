@@ -1,0 +1,34 @@
+<div id="view-games">
+    <div class="games-header-container">
+        <i class="fa fa-calendar"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-dollar"></i>
+        <i class="fa fa-check-square-o"></i>
+        <i class="fa fa-line-chart"></i>
+        <div class="game-header text-center">
+            <h3>Prove how much you know.</h3>
+            <p>Play games, earn badges, and best of all you'll have bragging rights.</p>
+        </div>
+    </div>
+    <div class="games-list-container">
+        <table class="full-width">
+            <tr ng-repeat="game in games" class="game-btn" ng-click="playGame(game)" >
+                <td class=" text-center icon-col">
+                    <div class="game-icon-container">
+                        <i class="{{game.icon}} game-icon"></i>
+                    </div>
+                </td>
+                <td class="desc-col">
+                    <div>
+                        <div class="salesDawg-font game-title">{{game.title}}</div>
+                        <p ng-if="!game.availableAt" class="small game-description">{{game.description}}</p>
+                        <p ng-if="game.availableAt" class="small game-description">Available to play <timer end-time="game.availableAt">{{hours}}:{{minutes}}:{{seconds}}</timer></p>
+                    </div>
+                </td>
+                <td class="learn-more-col">
+                    <i class="fa fa-angle-right learn-more-icon" ng-if="game.available"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

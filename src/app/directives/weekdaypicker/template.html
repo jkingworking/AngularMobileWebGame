@@ -1,0 +1,14 @@
+<div class="week-day-picker" >
+    <div class="days-container">
+        <div class="days-slider"><div class="day"
+                 ng-repeat="day in dateRange"
+                 ng-class="{'today': day.getDate() == today.getDate(), 'selected': selected == day, 'weekend': day.getDay()==0||day.getDay()==6}"
+                 ng-click="selectDate(day)">
+                <div class="day-of-month">{{day|moment:'Do'}}</div>
+                <div class="day-of-week">{{day|moment:'ddd'}}</div>
+                <div class="selected-icon">
+                    <i class="fa fa-check" ng-if="selected == day"></i>
+                </div>
+            </div></div>
+    </div>
+</div>

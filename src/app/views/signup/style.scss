@@ -1,0 +1,30 @@
+@import "../../../scss/vars";
+
+#view-signup{
+  padding: 100px 0;
+  background: $main-background;
+
+  .logo-container{
+    margin-bottom: 40px;
+  }
+
+  .form-control{
+    margin-bottom: 5px;
+  }
+
+  .icon-container{
+    position: relative;
+    width: 100%;
+    margin: 40px 0 20px 0;
+  }
+
+  .icon{
+    position : absolute;
+    top: -96px;
+    left: 0%;
+    right: 0%;
+    max-width: 86px;
+    margin: auto;
+  }
+
+}

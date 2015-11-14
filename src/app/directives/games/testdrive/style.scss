@@ -1,0 +1,167 @@
+@import "../../../../scss/vars";
+
+.test-drive-game{
+  #view-game {
+    overflow : hidden;
+  }
+}
+
+.game-test-drive {
+  background     : $gameHeaderBackground;
+  color          : $main-background;
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+
+  .header-container,
+  .activity-container,
+  .footer-container {
+    flex : 2 auto;
+  }
+
+  .activity-container {
+    background : $main-background;
+    color      : $text-color;
+    flex-grow  : 1;
+    min-height : 140px;
+    position   : relative;
+
+    &:before {
+      content    : '';
+      background : $main-background;
+      height     : 1em;
+      width      : 1em;
+      position   : absolute;
+      margin     : auto;
+      top        : -0.5em;
+      left       : 0;
+      right      : 0;
+      transform  : rotate(45deg);
+    }
+  }
+
+  .footer-container {
+    background : $main-background;
+    flex-grow  : 0;
+  }
+
+  .points-earned {
+    animation   : bounce-in $animationBuildTiming;
+    color       : #fff;
+    height      : 50px;
+    left        : 0;
+    line-height : 30px;
+    margin      : 0;
+    padding     : 10px 15px;
+    position    : fixed;
+    text-align  : right;
+    top         : 0;
+    width       : 100%;
+    z-index     : 100;
+
+    &:before {
+      content : '+';
+    }
+  }
+
+  .header-container,
+  .footer-container {
+    width         : 100%;
+    position      : relative;
+    user-select   : none;
+    touch-callout : none;
+  }
+
+  .footer-container {
+    padding-bottom : 1em;
+
+    .btn {
+      transform : translateX(-120%);
+
+      &.showButton {
+        animation : slideInLeft $transitionTiming;
+        transform : translateX(0);
+      }
+
+    }
+  }
+
+  .header-contents-container {
+    height   : 100%;
+    width    : 100%;
+    top      : 0;
+    left     : 0;
+    position : absolute;
+
+    .header-contents {
+      height   : 1.2em;
+      position : absolute;
+      margin   : auto;
+      top      : 0;
+      bottom   : 0;
+      width    : 100%;
+    }
+  }
+
+  .dateSelect {
+    margin        : auto;
+    position      : absolute;
+    width         : 100%;
+    height        : 140px;
+    top           : 0;
+    bottom        : 0;
+    user-select   : none;
+    touch-callout : none;
+  }
+
+  .textInput {
+    position   : absolute;
+    width      : 100%;
+    height: 100%;
+    margin-top : 1em;
+  }
+
+  .text-input{
+    height: 100%;
+  }
+
+  .customers-container {
+    background: $brand-warning;
+    border-radius: 0 0 5px 5px;
+    margin-top: 1em;
+    max-height: 100%;
+    overflow: scroll;
+
+    .title{
+      text-align: center;
+      font-weight: 600;
+      background: rgba(0,0,0,0.1);
+      padding: .5em;
+      color: $main-background;
+    }
+
+    .customer-list{
+      padding: 0 1em;
+    }
+
+    .customer {
+      color: $main-background;
+      line-height : 1.5em;
+      text-align: center;
+      padding     : .5em;
+      border-bottom: 1px solid transparentize($main-background, 0.5);
+
+      &:last-child{
+        border-bottom: none;
+      }
+
+    }
+  }
+
+  .clicked{
+    animation: bounceUp $transitionTiming;
+  }
+
+}

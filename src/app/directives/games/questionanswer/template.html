@@ -1,0 +1,47 @@
+<div class="question-answer-container">
+    <style>
+        .game-timer:after{
+            left: -{{( $root.gameTimer > 0 ) ? ( $root.gameTimer-1 ) * 100 / $root._gameTimerDefault : 0 }}%;
+        }
+    </style>
+    <div class="game-timer">{{$root.gameTimer}}'</div>
+
+    <div ng-repeat="activity in gameData.activities" class="question-answer">
+
+        <div class="question-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 question-card">
+                        <div class="row ">
+                            <div class="col-xs-12">
+                                <h4 class="question text-center">{{activity.questions[$root.currentQuestion].question}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        Question {{$root.currentQuestion+1}} of {{activity.questions.length}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="answer-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="answer-list">
+                            <li ng-repeat="answer in activity.questions[$root.currentQuestion].answers" class="bounce-in">
+                                <button class="btn btn-success btn-block btn-lg btn-game"
+                                        ng-click="selectAnswer($parent.$index, $index, answer.value, true)">
+                                    {{answer.label}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+@import "../../../scss/vars";
+
+
+$dashboardHeaderBackground: $brand-primary;
+
+.dashboard-state{
+  overflow: hidden;
+  background: $dashboardHeaderBackground;
+
+  #main-view #slidein-navbar .menu-container
+  {
+    background: $dashboardHeaderBackground;
+  }
+  #main-view .navbar {
+    background: transparentize($dashboardHeaderBackground, $headerBarTransparency);
+    // background: none;
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #main-view #main-content-area {
+
+  }
+}
+
+
+#view-dashboard {
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+
+  div.rn-carousel-indicator{
+    span{
+      color: $brand-grey;
+      &.active{
+        color: $brand-accent-gray;
+      }
+    }
+  }
+
+  .car-race,
+  .dashboard-summary,
+  .dashboard-newsfeed {
+    flex : auto auto;
+  }
+
+  .car-race {
+    height : 200px + $navBarHeight;
+    top: 0;
+    width: 100%;
+    position: absolute;
+  }
+
+  .dashboard-summary {
+    min-height     : 140px;
+    padding-bottom : 2em;
+    background: $main-background;
+    margin-top: 200px;
+  }
+
+  .points-slider {
+    animation  : ($animationBuildTiming + $animationBuildOffset * 2) fadeIn;
+    height      : 5.5rem;
+    margin      : 0;
+
+    .slide {
+      text-align : center;
+
+      .points {
+        line-height : normal;
+        font-size   : 4rem;
+        color       : $brand-primary;
+        @extend .salesDawg-font;
+      }
+    }
+  }
+
+  .rn-carousel-indicator {
+    span {
+      padding    : 0 .2rem;
+      transition : all .25s;
+    }
+  }
+
+  .tabs {
+    background     : $brand-grey;
+    font-size : 1.2rem;
+    overflow: hidden;
+
+    .tab{
+      animation  : ($animationBuildTiming + $animationBuildOffset*2) slideInUp;
+      padding: 1.25em 0;
+      &:first-child{
+        animation  : ($animationBuildTiming) slideInUp;
+      }
+      &:last-child{
+        animation  : ($animationBuildTiming + $animationBuildOffset*4) slideInUp;
+      }
+    }
+
+    .active{
+      .tab-text {
+        animation : ($animationBuildTiming/2) bounceUp;
+      }
+    }
+  }
+
+  .earn-points-btn {
+    animation  : $animationBuildTiming bounce-in;
+    position : absolute;
+    width    : 100%;
+  }
+
+  .dashboard-newsfeed {
+    overflow    : auto;
+    padding-top : 1.5em;
+    background: $main-background;
+
+    table {
+      margin-bottom: 0;
+
+      tr{
+        &:nth-child(1){
+          animation  : ($animationBuildTiming) slideInLeft;
+        }
+        &:nth-child(2){
+          animation  : ($animationBuildTiming + $animationBuildOffset) slideInLeft;
+        }
+        &:nth-child(3){
+          animation  : ($animationBuildTiming + $animationBuildOffset * 2) slideInLeft;
+        }
+        &:nth-child(4){
+          animation  : ($animationBuildTiming + $animationBuildOffset * 3) slideInLeft;
+        }
+        &:nth-child(5){
+          animation  : ($animationBuildTiming + $animationBuildOffset * 4) slideInLeft;
+        }
+      }
+    }
+
+    .animate-enter,
+    .animate-leave {
+      transition    : 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+      position      : relative;
+      display       : block;
+      overflow      : hidden;
+      text-overflow : clip;
+      white-space   : nowrap;
+    }
+
+    .animate-leave.animate-leave-active,
+    .animate-enter {
+      opacity : 0;
+      width   : 0px;
+      height  : 0px;
+    }
+
+    .animate-enter.animate-enter-active,
+    .animate-leave {
+      opacity : 1;
+      width   : 150px;
+      height  : 30px;
+    }
+
+  }
+
+  .news-item {
+    .avatar-col {
+      font-size : 2.2em;
+      width     : 1.25em;
+    }
+    .info-col {
+
+    }
+  }
+
+  .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    border-color : $brand-grey;
+  }
+
+}

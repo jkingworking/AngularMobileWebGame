@@ -1,0 +1,102 @@
+@import "../../../scss/vars";
+
+.week-day-picker{
+  position : relative;
+
+  &:before {
+    content  : '';
+    height   : 100%;
+    width    : 20px;
+    position : absolute;
+    top      : 0;
+    left    : 0;
+    z-index: 10;
+    background: linear-gradient(to left, transparentize($main-background, 1), $main-background);
+  }
+
+  &:after {
+    content  : '';
+    height   : 100%;
+    width    : 20px;
+    position : absolute;
+    top      : 0;
+    right    : 0;
+    z-index: 10;
+    background: linear-gradient(to right, transparentize($main-background, 1), $main-background);
+  }
+
+  .days-container{
+    overflow: auto;
+  }
+  .days-slider{
+    width: 215%;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .day{
+    transition: all $transitionTiming;
+    width: (100% / 14);
+    float: left;
+    text-align: center;
+    height: 100px;
+    position : relative;
+    background: $brand-info;
+    border-left:1px solid rgba(255,255,255,0.4);
+
+    &:first-child{
+      border-left: none;
+    }
+  }
+
+  .selected{
+    background: #79CDE6 !important;
+    transform: scale(1.15);
+    box-shadow: 2px 5px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-left: none;
+  }
+
+  .selected-icon{
+    position : absolute;
+    margin: auto;
+    height: 2em;
+    width: 100%;
+    text-align: center;
+    top:0;
+    bottom: 0;
+
+    i{
+      font-size: 1.5em;
+      animation: bounce-in $animationBuildTiming;
+      background: $brand-success;
+      height: 1.6em;
+      width: 1.6em;
+      padding: .3em;
+      border-radius: 50%;
+    }
+  }
+
+  .today{
+    background: transparentize($brand-success, 0.5);
+  }
+
+  .weekend{
+    background: transparentize($brand-info, 0.4);
+  }
+
+  .day-of-month{
+    position: absolute;
+    bottom: .5em;
+    left: 0;
+    width: 100%;
+  }
+
+  .day-of-week{
+    position: absolute;
+    top: .5em;
+    left: 0;
+    width: 100%;
+    text-transform: uppercase;
+  }
+}

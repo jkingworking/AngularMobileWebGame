@@ -1,0 +1,71 @@
+<div class="game-set-appointment"
+     ng-class="stateClass">
+
+    <div class="container header-container">
+        <div class="points-earned" ng-if="totalRewards.points > 0">{{totalRewards.points|number}}{{activity.reward_type|rewardType:'short'}}</div>
+        <div class="text-center">Step {{currentActivity+1}} of {{gameData.activities.length}}</div>
+        <div class="header-contents-container">
+            <div class="header-contents text-center animate">
+                <h4>{{activity.title}}</h4>
+                <p>{{activity.description}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="activity-container">
+
+        <div ng-switch="activity.activity_type" ng-class="activity.activity_type">
+
+            <div ng-switch-when="dateSelect" class="animate">
+                <week-day-picker
+                        on-set-time="onDateSet()"
+                        ng-model="formData[currentActivity]"
+                        config="{ startView:'day', minView:'day' }"
+                        ></week-day-picker>
+            </div>
+
+            <div ng-switch-when="textInput" class="text-input animate">
+                <div class="container">
+                    <input type="text"
+                           ng-model="formData[currentActivity]"
+                           placeholder="Enter {{activity.condition_name|conditionFormatter}}"
+                           clear-focus="clearFocus"
+                           class="form-control"/>
+                </div>
+            </div>
+
+            <div ng-switch-when="radio" class="animate" class="btn-group btn-group-justified" role="group">
+                <div class="btn-group" role="group" ng-repeat="radioValue in activity.condition_param.split(',')">
+                    <button
+                            type="button"
+                            class="btn btn-default"
+                            ng-class="{
+                                        'btn-secondary':formData[$parent.$index] !== radioValue,
+                                        'btn-primary':formData[$parent.$index] === radioValue
+                                        }"
+                            ng-click="setRadioValue($parent.$index, radioValue)">{{radioValue}}
+                    </button>
+                </div>
+            </div>
+
+            <div ng-switch-when="select" class="animate">
+                <select class="form-control" ng-model="formData[currentActivity]" ng-change="optionChanged()">
+                    <option value="">- Please Select -</option>
+                    <option value="{{selectOption}}"
+                            ng-repeat="selectOption in activity.condition_param.split(',')">
+                        {{selectOption}}
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container footer-container">
+        <br>
+        <button type="button"
+                class="btn btn-success btn-lg full-width"
+                ng-click="nextActivity()"
+                ng-class="{'showButton': showButton, 'hideButton': !showButton}">{{(currentActivity+1 == gameData.activities.length) ? gameData.title : 'Next'}} <i ng-if="currentActivity+1 != gameData.activities.length" class="fa fa-angle-right float-right"></i></button>
+    </div>
+</div>

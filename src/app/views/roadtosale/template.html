@@ -1,0 +1,37 @@
+<div id="view-road-to-sale">
+    <div class="view-road-to-sale-header">
+        <div class="background country">
+            <div class="grass left"></div>
+            <div class="grass right"></div>
+            <div class="layer-4"></div>
+        </div>
+        <div class="street-container">
+            <div class="animated-street"></div>
+            <div class="animated-grass"></div>
+        </div>
+        <div class="header-block text-center">
+            <h3>Keep pushing down the road.</h3>
+            <p>Set more appointments, take more test drives, sell more cars.</p>
+        </div>
+    </div>
+    <div class="view-road-to-sale-list">
+        <table class="full-width">
+            <tr ng-repeat="game in games" class="game-btn" ng-click="playGame(game)" >
+                <td class=" text-center icon-col">
+                    <div class="game-icon-container">
+                        <i class="{{game.icon}} game-icon"></i>
+                    </div>
+                </td>
+                <td class="desc-col">
+                    <div>
+                        <div class="salesDawg-font game-title">{{game.title}}</div>
+                        <p class="small game-description">{{game.description}}</p>
+                    </div>
+                </td>
+                <td class="learn-more-col">
+                    <i class="fa fa-angle-right learn-more-icon"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

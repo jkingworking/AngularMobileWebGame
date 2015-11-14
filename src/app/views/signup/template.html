@@ -1,0 +1,57 @@
+<div id="view-signup">
+    <div class="container">
+
+        <div class="container text-center bg-grey alert">
+            <div class="icon-container">
+                <div class="icon">
+                    <img src="assets/icons/iTunesArtwork.png" alt="" class="img-circle">
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <img class="normal-icon" ng-src="assets/images/logo.svg" alt="SalesDawg Logo" title="SalesDawg" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container" >
+                <form ng-submit="signUpUser()" novalidate>
+                    <div class="alert text-left" ng-if="errors">
+                        <div ng-repeat="error in errors"><b>{{error}}</b></div>
+                    </div>
+                    <input required class="form-control input-lg" type="text" placeholder="Full Name" ng-model="signup.name" >
+                    <input required class="form-control input-lg" type="email" placeholder="Email" ng-model="signup.email" >
+
+                    <div class="has-feedback" ng-class="{'has-warning':passwordMismatch}">
+                        <input required class="form-control input-lg" type="password" placeholder="Password" ng-model="signup.password" ng-blur="confirmPassword()"  >
+                        <span class="fa fa-warning form-control-feedback"></span>
+                    </div>
+
+                    <div class="has-feedback" ng-class="{'has-warning':passwordMismatch}">
+                        <input required class="form-control input-lg" type="password" placeholder="Confirm Password" ng-model="signup.password_confirm" ng-keyup="confirmPassword()" >
+                        <span class="fa fa-warning form-control-feedback"></span>
+                    </div>
+
+                    <select required class="form-control input-lg" ng-model="signup.group_id" ng-if="groups.length" >
+                        <option value="">{{(groups.length == 0) ? 'Loading...' : '- Select Dealership -'}}</option>
+                        <option ng-repeat="group in groups | orderBy:'title'" value="{{group.id}}" ng-select="inviteGroup == group.id">{{group.name}} - {{group.city}}, {{group.state}}</option>
+                    </select>
+
+                    <div class="has-feedback" ng-class="{'has-warning':passwordMismatch}" ng-if="!groups.length">
+                        <input required class="form-control input-lg" type="text" value="Team {{group.name}}" ng-disabled="!groups.length" >
+                        <span class="fa fa-check form-control-feedback primary"></span>
+                    </div>
+
+                    <button type="submit" class="btn-lg col-xs-12 btn-primary" ng-disabled="loading" ng-class="{'disabled':loading}" ><span ng-hide="loading" >Sign Up</span><span ng-hide="!loading" >Loading <i class="fa fa-spinner fa-pulse" ></i></span></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="">
+                <a class="btn-link" ui-sref="login">Cancel</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

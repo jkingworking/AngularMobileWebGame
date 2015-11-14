@@ -1,0 +1,101 @@
+@import "../../../scss/vars";
+
+$feedbackHeaderBackground: $brand-success-alt;
+
+.feedback-state{
+  overflow: hidden;
+  background: $feedbackHeaderBackground;
+
+  #main-view #slidein-navbar .menu-container
+  {
+    background: $feedbackHeaderBackground;
+  }
+  #main-view .navbar {
+    background: transparentize($feedbackHeaderBackground, 1);
+  }
+}
+
+#view-feedback {
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+
+  .feedback-header-container,
+  .feedback-body-container {
+    flex : auto;
+  }
+
+  .feedback-header-container{
+    color: #fff;
+    position: relative;
+
+    .feedback-header-content{
+      height: calc(100% - #{$navBarHeight});
+      position: absolute;
+      display: flex;
+      align-content: center;
+      align-items: center;
+    }
+
+    i{
+      $timeInterval: .4s;
+
+      opacity: 0;
+      &:first-child {
+        font-size : 8em;
+      }
+      &:nth-child(2) {
+        animation-delay: $timeInterval*1;
+        font-size : 5em;
+      }
+      &:nth-child(3) {
+        animation-delay: $timeInterval*2;
+        font-size : 7em;
+      }
+      &:nth-child(4) {
+        animation-delay: $timeInterval*3;
+        font-size : 3em;
+      }
+    }
+
+    .fly-by{
+      position: absolute;
+      animation: fly-by 6s ease-in infinite;
+    }
+
+    .message{
+      transition: opacity $transitionTiming linear;
+      opacity: 0;
+      width: 100%;
+      max-height: 400px;
+
+      &.show-message{
+        opacity: 1;
+        max-height: 400px;
+      }
+
+      &.hide-message{
+        opacity: 0;
+        max-height: 0;
+      }
+    }
+  }
+
+  .feedback-body-container{
+    animation  : ($animationBuildTiming) slideInUp;
+    transition: all .5s ease;
+    flex-grow: 0;
+    background: $main-background;
+    padding: 1em 0;
+    overflow: hidden;
+    max-height: 400px;
+
+    &.hide-form{
+      max-height: 0;
+      padding: 0;
+    }
+  }
+
+}

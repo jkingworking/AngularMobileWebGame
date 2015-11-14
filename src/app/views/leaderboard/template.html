@@ -1,0 +1,45 @@
+<div id="view-leader-board">
+    <div class="leaderboard-user-ranking">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 leaderboard-rank-col">
+                    <h3 class="">{{myRank.rank|ordinal}}</h3>
+                    <span class="small">Rank</span>
+                </div>
+                <div class="col-xs-4 leaderboard-avatar-col">
+                    <user-avatar></user-avatar>
+                </div>
+                <div class="col-xs-4 leaderboard-points-col">
+                    <h3 class="">{{myRank.points|number}}</h3>
+                    <span class="small">Points</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard-header">
+        <div class="container">
+            <div class="row tabs">
+                <div class=" text-center col-xs-4"
+                     ng-repeat="board in boards"
+                     ng-class="{active: $index === activeBoard}"
+                     ng-click="selectBoard($index)"><span class="tab-text" >{{board.name}}</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="leaderboard" ng-class="{'loading': loading}">
+        <table class="table table-striped">
+            <tr ng-repeat="leader in leaders |orderBy:'rank'" ui-sref="app.profile({profileId:leader.user.id})">
+                <td class="rank-col">{{leader.rank}}.</td>
+                <td class="avatar-col"><avatar src="leader.user.avatar.file_location"></avatar></td>
+                <td class="player-name-col">
+                    <div class="player-name" >{{leader.user.name}}</div>
+                </td>
+                <td class="player-points-col">
+                    <div class="player-points" >{{leader.points | number}} pts</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

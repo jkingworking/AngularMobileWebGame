@@ -1,0 +1,101 @@
+@import "../../../scss/vars";
+
+$settingsHeaderBackground: $brand-accent-gray;
+
+.settings-state{
+  #main-view #slidein-navbar .menu-container,
+  #main-view .navbar{
+    background: $settingsHeaderBackground;
+  }
+}
+
+#view-settings {
+  $avatarSize : 20rem;
+
+  .avatar-upload-container{
+    padding: 0.5em;
+    color: #fff;
+    margin-bottom: 1em;
+    position: relative;
+    background: $settingsHeaderBackground;
+
+    .avatar-upload-box {
+      position : relative;
+      display: inline-block;
+      height   : $avatarSize;
+      width    : $avatarSize;
+      overflow : hidden;
+      border   : 1px solid #FFFFFF;
+      border-radius: 50%;
+
+      & > button,
+      & > .img {
+        margin              : auto;
+        position            : absolute;
+        padding             : 0;
+        left                : 0;
+        top                 : 0;
+        right               : 0;
+        background-position : center center;
+        background-size     : cover;
+      }
+
+      & > button {
+        background : none;
+        z-index    : 10;
+        color      : transparent;
+        border     : none;
+        outline    : none;
+        height     : $avatarSize;
+        width      : $avatarSize;
+      }
+
+      & > .img {
+        height: 100%;
+        width: 100%;
+        margin: auto;
+      }
+
+      .upload-complete{
+        bottom      : 0;
+        font-size   : 5rem;
+        height      : 1em;
+        left        : 0;
+        line-height : normal;
+        margin      : auto;
+        position    : absolute;
+        right       : 0;
+        top         : 0;
+        width       : 1em;
+        z-index     : 9;
+        opacity     : 0;
+        transition  : all .25s;
+        color: #fff;
+        text-shadow: 0 0 10px #000;
+
+        &.show{
+          opacity: 1;
+        }
+      }
+
+      .upload-progress{
+        position: absolute;
+        width      : 100%;
+        left       : 0;
+        right      : 0;
+        top        : 0;
+        background : rgba(255, 255, 255, 0.8);
+        z-index    : 8;
+      }
+    }
+  }
+  .submit-btn{
+  }
+
+  .form-container{
+    background: $main-background;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+}

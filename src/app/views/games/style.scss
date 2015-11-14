@@ -1,0 +1,254 @@
+@import "../../../scss/vars";
+
+$gamesHeaderBackground: $brand-success;
+
+.games-state{
+  background: $gamesHeaderBackground;
+
+  #main-view #slidein-navbar .menu-container {
+    background: $gamesHeaderBackground;
+  }
+
+  #main-view .navbar {
+    background: transparentize($gamesHeaderBackground, $headerBarTransparency);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #main-view #main-content-area{
+    padding-top: 0;
+  }
+}
+
+#view-games {
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+  user-select    : none;
+  touch-callout  : none;
+
+  .games-header-container,
+  .games-list-container {
+    flex : auto auto;
+  }
+
+  .games-header-container {
+    position  : relative;
+    flex-grow : 1;
+    overflow: hidden;
+
+    $animationDelay : 2s;
+    $animationTime : 6s;
+    $animationOffset: 2s;
+
+    i {
+      top       : -200px;
+      animation : drop-spin $animationTime infinite linear;
+      position  : absolute;
+      font-size : 3em;
+      z-index: 0;
+      color     : rgba(255, 255, 255, 0.2);
+
+      &:nth-child(1) {
+        font-size : 8em;
+        left      : 0;
+      }
+      &:nth-child(2) {
+        animation-delay : $animationDelay;
+        animation-duration: $animationTime + $animationOffset;
+        font-size       : 9em;
+        left            : 18%;
+      }
+      &:nth-child(3) {
+        animation-delay : $animationDelay*2;
+        animation-duration: $animationTime + $animationOffset*2;
+        font-size       : 6em;
+        right           : 12%;
+      }
+      &:nth-child(4) {
+        animation-delay : $animationDelay*3;
+        animation-duration: $animationTime + $animationOffset*3;
+        font-size       : 6em;
+        right           : 12%;
+      }
+      &:nth-child(5) {
+        animation-delay : $animationDelay*4;
+        animation-duration: $animationTime + $animationOffset*4;
+        left            : 50%;
+      }
+    }
+
+    .game-header {
+      color                   : $main-background;
+      -webkit-backdrop-filter : blur(10px);
+      position                : absolute;
+      width                   : 100%;
+      height                  : 74px + $navBarHeight;
+      margin                  : auto;
+      padding                 : 0 15px;
+      top                     : 0;
+      bottom                  : 0;
+      left                    : 0;
+    }
+
+  }
+
+  .games-list-container {
+    flex-grow  : 0;
+    background : $main-background;
+    overflow   : scroll;
+    z-index: 10;
+  }
+
+  h4 {
+    font-weight: 300;
+    margin : 1.5em 0;
+  }
+
+  .game-btn {
+    color      : $text-color-emphasis;
+    transition : all 0.1s;
+    position   : relative;
+    text-align : left;
+
+    &:active {
+      background : $brand-grey;
+    }
+
+    td {
+      padding-top    : 1em;
+      padding-bottom : 1em;
+    }
+
+  }
+
+
+  .game-icon {
+    position  : absolute;
+    margin    : auto;
+    font-size : 3.5em;
+    color     : rgba(255, 255, 255, 0.4);
+    width     : 1em;
+    height    : 1em;
+    top       : 0;
+    bottom    : 0;
+    left      : 0;
+    right     : 0;
+    transform : rotate(15deg);
+  }
+
+  .learn-more-icon {
+    font-size : 2em;
+    color     : $brand-accent-gray; //$brand-secondary;
+  }
+
+  tr {
+    transition : all $transitionTiming;
+
+    &:active{
+      color : #fff;
+
+      .game-description,
+      .learn-more-icon,
+      .icon-col {
+        color : #fff;
+        .game-icon-container {
+          border-radius : 0;
+          width         : 100%;
+          height        : 100%;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      animation  : $animationBuildTiming slideInLeft;
+
+      &:active,
+      .game-icon-container {
+        background : $brand-info;
+      }
+    }
+
+    &:nth-child(2) {
+      animation  : ($animationBuildTiming + $animationBuildOffset) slideInLeft;
+
+      &:active,
+      .game-icon-container {
+        background : $brand-warning;
+      }
+    }
+
+    &:nth-child(3) {
+      animation  : ($animationBuildTiming + $animationBuildOffset * 2) slideInLeft;
+
+      &:active,
+      .game-icon-container {
+        background : $brand-danger;
+      }
+    }
+
+    &:nth-child(4) {
+      animation  : ($animationBuildTiming + $animationBuildOffset * 3) slideInLeft;
+
+      &:active,
+      .game-icon-container {
+        background : $brand-warning;
+      }
+    }
+
+    &:nth-child(5) {
+      animation  : ($animationBuildTiming + $animationBuildOffset * 4) slideInLeft;
+
+      &:active,
+      .game-icon-container {
+        background : $brand-info;
+      }
+    }
+
+    &:last-child {
+      .desc-col {
+        border-bottom : none;
+      }
+    }
+
+  }
+
+  .game-title {
+    font-size : 1.25em;
+  }
+
+  .game-description {
+    color         : $brand-accent-gray;
+    margin-bottom : 0;
+  }
+
+  .icon-col {
+    position: relative;
+    vertical-align : top;
+    width         : 110px;
+
+    .game-icon-container {
+      transition: all $transitionTiming;
+      width         : 80px;
+      height        : 50px;
+      border-radius : 25px;
+      position      : absolute;
+      margin: auto;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow      : hidden;
+    }
+  }
+
+  .desc-col {
+    padding       : 1em 0;
+    border-bottom : 1px solid $brand-grey;
+  }
+
+  .learn-more-col {
+    padding : 0 1em;
+  }
+}

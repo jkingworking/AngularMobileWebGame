@@ -1,0 +1,153 @@
+@import "../../../../scss/vars";
+
+.vehicle-sold-game {
+  #view-game {
+    overflow : hidden;
+  }
+}
+
+.game-sold-vehicle {
+  background     : $gameHeaderBackground;
+  color          : $main-background;
+  height         : 100%;
+  display        : flex;
+  flex-direction : column;
+  align-items    : stretch;
+  align-content  : stretch;
+
+  .header-container,
+  .activity-container,
+  .footer-container {
+    flex : 2 auto;
+  }
+
+  .activity-container {
+    background : $main-background;
+    color      : $text-color;
+    flex-grow  : 1;
+    min-height : 140px;
+    position   : relative;
+
+    &:before {
+      content    : '';
+      background : $main-background;
+      height     : 1em;
+      width      : 1em;
+      position   : absolute;
+      margin     : auto;
+      top        : -0.5em;
+      left       : 0;
+      right      : 0;
+      transform  : rotate(45deg);
+    }
+  }
+
+  .footer-container {
+    background : $main-background;
+    flex-grow  : 0;
+  }
+
+  .points-earned {
+    animation   : bounce-in $animationBuildTiming;
+    color       : #fff;
+    height      : 50px;
+    left        : 0;
+    line-height : 30px;
+    margin      : 0;
+    padding     : 10px 15px;
+    position    : fixed;
+    text-align  : right;
+    top         : 0;
+    width       : 100%;
+    z-index     : 100;
+
+    &:before {
+      content : '+';
+    }
+  }
+
+  .header-container,
+  .footer-container {
+    width         : 100%;
+    position      : relative;
+    user-select   : none;
+    touch-callout : none;
+  }
+
+  .footer-container {
+    padding-bottom : 1em;
+
+    .btn {
+      transform : translateX(-120%);
+
+      &.showButton {
+        animation : slideInLeft $transitionTiming;
+        transform : translateX(0);
+      }
+
+    }
+  }
+
+  .header-contents-container {
+    height   : 100%;
+    width    : 100%;
+    top      : 0;
+    left     : 0;
+    position : absolute;
+
+    .header-contents {
+      height   : 1.2em;
+      position : absolute;
+      margin   : auto;
+      top      : 0;
+      bottom   : 0;
+      width    : 100%;
+    }
+  }
+
+  .dateSelect {
+    margin        : auto;
+    position      : absolute;
+    width         : 100%;
+    height        : 140px;
+    top           : 0;
+    bottom        : 0;
+    user-select   : none;
+    touch-callout : none;
+  }
+
+  .textInput,
+  .select {
+    margin   : auto;
+    position : absolute;
+    width    : 100%;
+    height   : 46px;
+    top      : 0;
+    bottom   : 0;
+  }
+
+  .select {
+    i {
+      position : absolute;
+      margin   : auto;
+      height   : 1em;
+      top      : 0;
+      bottom   : 0;
+      right    : 30px;
+      color    : $brand-accent-gray;
+    }
+  }
+
+  .radio {
+    position : absolute;
+    margin   : auto;
+    top      : 0;
+    bottom   : 0;
+    width    : 100%;
+    height   : 91px;
+  }
+
+  .text-input {
+    height : 100%;
+  }
+}

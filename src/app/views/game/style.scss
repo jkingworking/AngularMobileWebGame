@@ -1,0 +1,105 @@
+@import "../../../scss/vars";
+
+.game-state{
+  background: $gameHeaderBackground;
+
+  #main-view #slidein-navbar .menu-container{
+    background: $gameHeaderBackground;
+  }
+  #main-view .navbar{
+    background: transparentize($gameHeaderBackground, 1);
+  }
+
+}
+
+#view-game{
+  height: 100%;
+
+  .animate-out{
+    .animate{
+      animation: slideOutLeft $transitionTiming;
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-in{
+    .animate{
+      animation: slideInRight $transitionTiming;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-back{
+    .animate{
+      animation: slideOutRight $transitionTiming;
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-back-in{
+    .animate{
+      animation: slideInLeft $transitionTiming;
+      transform: translateX(0);
+    }
+  }
+
+  .game-container {
+    height: 100%;
+    position: relative;
+  }
+
+  h4{
+    line-height: 1.2em;
+    font-weight : 300;
+  }
+
+  .text-input,
+  .select{
+    input,
+    select{
+      -webkit-appearance: textfield;
+      transition: all $transitionTiming;
+      text-align    : center;
+      border        : 0;
+      height        : auto;
+      font-size     : 1.5em;
+      line-height   : 1.5em;
+      padding: 6px 12px;
+      font-weight: 300;
+      outline       : none;
+      border-radius : 0;
+      border-bottom : 1px solid $brand-accent-gray;
+      box-shadow    : none;
+
+      &:focus {
+        border-bottom-width: 2px;
+        border-bottom-color: $brand-success;
+      }
+    }
+  }
+
+  .radio-buttons{
+    button,
+    button:active,
+    button:focus{
+      outline: none;
+      font-size: 1.2em;
+    }
+
+    i{
+      display: block;
+      font-size: 2em;
+      padding: .25em 0;
+      text-align: center;
+    }
+  }
+
+  .footer-container{
+
+    .btn i{
+      vertical-align : middle;
+      font-size      : 1.2em;
+    }
+  }
+
+}
