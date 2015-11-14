@@ -1,13 +1,27 @@
 # README #
 
-##Getting Setup##
-To build and use this you'll need NPM, and bower already installed globally. 
+##Before Starting##
 
-1. In the terminal run.
+Before starting make sure you have the latest NPM and Bower already installed, I suggest globally. If you have already done this skip down to the __Getting Started__ section.
+
+###Install and Update###
+__Note__ If not installing globally, first cd into the root of this project then remove the `-g` flag from all command...
+
+1. Download and install node from https://nodejs.org
+2. Install bower ```sudo npm install bower -g```
+Update Node, NPM, and Bower
 ```
-npm install; bower install; 
+sudo npm update n npm bower -g
 ```
-2. Create a userData.json file at the root of the project. Use the following template to populate the file
+
+##Getting Setup##
+
+In the terminal run. 
+```
+npm install; bower install;
+```
+
+Create a userData.json file at the root of the project. Use the following template to populate the file
 ```
 {
   "templateModule": "salesDawg.templates",
@@ -29,6 +43,12 @@ npm install; bower install;
   "devPort": "8080"
 }
 ```
+For the `devHost` and `devUrl` you can use 127.0.0.1 However, if you choose to run it with the domain name provided you'll need to add this line to your `/etc/hosts` file.
+```
+127.0.0.1       local.app.salesdawg.com
+```
+
+
 ###The gulp commands you'll need to know###
 
 ``gulp serve`` Starts up a server on 8080 and listen for js and css changes to livereload
