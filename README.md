@@ -1,5 +1,11 @@
 # README #
 
+### What is this repository for? ###
+
+This repo is the mobile web application SalesDawg. It's a game-ified sales training tool for car salesmen. The game trains salesmen in good selling habbits by rewarding them for repeating good behaviours. It also helps them improve their product knowledge with a competitive quize style game.
+
+__FYI__ This API is powered by a private API so I won't publish any active user credentials here. But if you want to play with it send me an email and I'll be happy to give you a test account.
+
 ##Before Starting##
 
 Before starting make sure you have the latest NPM and Bower already installed, I suggest globally. If you have already done this skip down to the __Getting Started__ section.
@@ -19,7 +25,7 @@ sudo npm install bower -g
 sudo npm update n npm bower -g
 ```
 
-##Getting Setup##
+##Getting Started##
 
 1. cd into the project root.
 2. In the terminal run. 
@@ -55,18 +61,13 @@ npm install; bower install;
 127.0.0.1       local.app.salesdawg.com
 ```
 
-
 ###The gulp commands you'll need to know###
 
 1. ``gulp serve`` Starts up a server on 8080 and listen for js and css changes to livereload
 2. ``gulp build`` Cleans out the /build folder minify, concatenate, and inject all the scripts, create the new app manifest, and increment the version number
 3. ``gulp stage`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the staging server and pulls the latest build.
 4. ``gulp dist`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the production server and pulls the latest build.
-
-### What is this repository for? ###
-
-This repo is the mobile web application SalesDawg. It's a game-ified sales training tool for car dealers. It's powered by a private API so I won't publish any active user credentials here. But if you want to play with it send me an email and I'll be happy to give you a test account to play with.
-
+5. 
 ### Who do I talk to? ###
 
 Jonathan King jonathan@jkingworking.com
