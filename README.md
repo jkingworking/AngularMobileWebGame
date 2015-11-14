@@ -8,21 +8,22 @@ Before starting make sure you have the latest NPM and Bower already installed, I
 __Note__ If not installing globally, first cd into the root of this project then remove the `-g` flag from all command...
 
 1. Download and install node from https://nodejs.org
-2. Install bower ```sudo npm install bower -g```
-Update Node, NPM, and Bower
+2. Install Bower ```sudo npm install bower -g```
+3. Update Node, NPM, and Bower
 ```
 sudo npm update n npm bower -g
 ```
 
 ##Getting Setup##
 
-In the terminal run. 
-```
+1. cd into the project root.
+2. In the terminal run. 
+  ```
 npm install; bower install;
-```
+  ```
 
-Create a userData.json file at the root of the project. Use the following template to populate the file
-```
+3. Create a userData.json file at the root of the project. Use the following template to populate the file
+  ```
 {
   "templateModule": "salesDawg.templates",
 
@@ -43,21 +44,19 @@ Create a userData.json file at the root of the project. Use the following templa
   "devPort": "8080"
 }
 ```
-For the `devHost` and `devUrl` you can use 127.0.0.1 However, if you choose to run it with the domain name provided you'll need to add this line to your `/etc/hosts` file.
-```
+4.  __Optional__
+  For the `devHost` and `devUrl` you can use 127.0.0.1 However, if you choose to run it with the domain name provided above you'll need to add this line to your `/etc/hosts` file.
+  ```
 127.0.0.1       local.app.salesdawg.com
 ```
 
 
 ###The gulp commands you'll need to know###
 
-``gulp serve`` Starts up a server on 8080 and listen for js and css changes to livereload
-
-``gulp build`` Cleans out the /build folder minify, concatenate, and inject all the scripts, create the new app manifest, and increment the version number
-
-``gulp stage`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the staging server and pulls the latest build.
-
-``gulp dist`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the production server and pulls the latest build.
+1. ``gulp serve`` Starts up a server on 8080 and listen for js and css changes to livereload
+2. ``gulp build`` Cleans out the /build folder minify, concatenate, and inject all the scripts, create the new app manifest, and increment the version number
+3. ``gulp stage`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the staging server and pulls the latest build.
+4. ``gulp dist`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the production server and pulls the latest build.
 
 ### What is this repository for? ###
 
