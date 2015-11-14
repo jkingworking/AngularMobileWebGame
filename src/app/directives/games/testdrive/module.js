@@ -22,6 +22,21 @@ angular.module('directive.games.testDrive', [])
         $scope.clearFocus = false;
         $scope.currentActivity = 0;
 
+        function arrayUnique(a)
+        {
+            if(a)
+            {
+                return a.reduce(function (p, c)
+                {
+                    if (p.indexOf(c) < 0)
+                    {
+                        p.push(c);
+                    }
+                    return p;
+                }, []);
+            }
+        }
+
         function init()
         {
             $scope.stateClass = 'animate-in';

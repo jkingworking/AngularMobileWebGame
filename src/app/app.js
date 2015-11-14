@@ -59,16 +59,8 @@ angular.module('mbsApp', modules)
     .run(function ($rootScope, localStorageService, $state, $http, $timeout)
     {
         var gameTimerTimeout;
-        if (window.location.hostname.substring(0, 6) === 'local.')
-        {
-            $rootScope._dev = true;
-            $rootScope._apiUrlBase = 'http://local.api.salesdawg.com/';
-        }
-        else
-        {
-            $rootScope._dev = false;
-            $rootScope._apiUrlBase = 'http://api.salesdawg.com/';
-        }
+        $rootScope._dev = (window.location.hostname.substring(0, 6) === 'local.');
+        $rootScope._apiUrlBase = 'http://api.salesdawg.com/';
         $rootScope._baseUrl = 'http://salesdawg.com/';
         $rootScope._timeZone = 'America/Chicago';
         $rootScope._loginAttempts = 0;
@@ -185,19 +177,3 @@ angular.module('mbsApp', modules)
             'close' : '<i class="fa fa-close"></i>'
         }
     });
-
-var arrayUnique = function (a)
-{
-    console.log('a', a);
-    if(a)
-    {
-        return a.reduce(function (p, c)
-        {
-            if (p.indexOf(c) < 0)
-            {
-                p.push(c);
-            }
-            return p;
-        }, []);
-    }
-};

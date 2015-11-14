@@ -1,6 +1,6 @@
 {
   "name": "SalesDawg",
-  "version": "1.1.36",
+  "version": "1.1.37",
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enolaweb/mbsquoteline"
@@ -60,6 +60,7 @@
     "quotmark": false,
     "unused": false,
     "camelcase": false,
+    "globalstrict": true,
     "globals": {
       "angular": true,
       "Audio": true,
