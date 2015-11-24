@@ -67,7 +67,7 @@ npm install; bower install;
 2. ``gulp build`` Cleans out the /build folder minify, concatenate, and inject all the scripts, create the new app manifest, and increment the version number
 3. ``gulp stage`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the staging server and pulls the latest build.
 4. ``gulp dist`` Builds the project creates a git commit with an optional user message, creates a git tag, SSHs into the production server and pulls the latest build.
-5. 
+
 ### Who do I talk to? ###
 
 Jonathan King jonathan@jkingworking.com
